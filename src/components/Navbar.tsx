@@ -35,16 +35,16 @@ const Navbar = ({ onOpenAppointment }: NavbarProps) => {
 
   return (
     <>
+
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         style={{ transform: 'translateZ(0)' }}
-        className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 transition-all duration-400 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 transition-all duration-400 ${scrolled
             ? 'py-3.5 bg-[#0C0B0A]/90 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
             : 'py-5 md:py-6 bg-gradient-to-b from-black/60 to-transparent'
-        }`}
+          }`}
       >
         {/* Logo */}
         <a href="#home" aria-label="Jac Creation home" className="shrink-0 group">
