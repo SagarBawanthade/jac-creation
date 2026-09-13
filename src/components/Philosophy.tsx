@@ -35,11 +35,10 @@ const Philosophy = () => {
                   initial={{ y: '110%' }}
                   animate={inView ? { y: 0 } : {}}
                   transition={{ delay: 0.12 + i * 0.12, duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
-                  className={`font-serif font-light leading-[1.05] block ${
-                    i === 2
-                      ? 'italic font-normal text-[#A68037]'
-                      : 'text-[#141210]'
-                  }`}
+                  className={`font-serif font-light leading-[1.05] block ${i === 2
+                    ? 'italic font-normal text-[#A68037]'
+                    : 'text-[#141210]'
+                    }`}
                   style={{ fontSize: 'clamp(2.8rem, 5.2vw, 5.2rem)' }}
                 >
                   {line}
@@ -63,7 +62,7 @@ const Philosophy = () => {
             transition={{ delay: 0.65, duration: 0.9 }}
             className="font-sans font-normal text-[15.5px] leading-[1.95] text-[#2C2621] max-w-[460px] mb-10"
           >
-            Jac Creation works across residential, hospitality, and public-space design —
+            Jac Creation works across residential, hospitality, and public-space design ,
             always with an emphasis on how a place <strong className="font-medium text-[#141210]">feels to inhabit</strong>,
             not just how it photographs. Every project begins with an inquiry into life as it is lived.
           </motion.p>
@@ -114,12 +113,7 @@ const Philosophy = () => {
           {/* Architectural Badge */}
           <div className="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 bg-[#FAF7F2]/95 backdrop-blur-md px-6 py-4 border border-[#C5A059]/30 shadow-xl">
             <span className="font-serif italic text-[2.2rem] text-[#A68037] leading-none block">2006</span>
-            <span className="font-sans text-[9px] font-semibold tracking-[0.3em] uppercase text-[#141210] mt-1.5 block">
-              Atelier Founded · Lisbon & Porto
-            </span>
-            <span className="font-sans text-[8px] tracking-[0.18em] text-[#73685E] mt-0.5 block">
-              Evidence-Based Spatial Practice
-            </span>
+
           </div>
         </motion.div>
       </div>

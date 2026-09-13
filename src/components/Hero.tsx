@@ -45,9 +45,9 @@ const Hero = ({ onExploreWork, onOpenAppointment }: HeroProps) => {
             transition={{ delay: 0.45, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-wrap items-center gap-3 mb-6"
           >
-            {['Residential Architecture', 'Hospitality Retreatment', 'Public Space & Civic Parks'].map((cat, i) => (
+            {['Architecture', 'Hospitality', 'Public Space'].map((cat, i) => (
               <div key={cat} className="flex items-center gap-3">
-                <span className="font-sans text-[9px] sm:text-[10px] font-semibold tracking-[0.28em] uppercase text-[#F5F2EB] bg-black/40 backdrop-blur-md px-3 py-1 border border-white/15">
+                <span className="font-sans text-[9px] sm:text-[10px] font-semibold tracking-[0.28em] uppercase text-[#F5F2EB]   ">
                   {cat}
                 </span>
                 {i < 2 && <span className="text-[#C5A059] text-[12px]">·</span>}
@@ -152,18 +152,7 @@ const Hero = ({ onExploreWork, onOpenAppointment }: HeroProps) => {
           </span>
         </button>
 
-        {/* Geographic Coordinate Stamp */}
-        <div className="hidden sm:flex items-center gap-3 text-right">
-          <Compass size={14} className="text-[#C5A059]" />
-          <div>
-            <span className="font-sans text-[9px] font-medium tracking-[0.24em] uppercase text-white/80 block">
-              38°42'50"N · 9°08'22"W
-            </span>
-            <span className="font-sans text-[8.5px] tracking-[0.18em] uppercase text-[#A89F91] block">
-              Lisbon & Porto Ateliers
-            </span>
-          </div>
-        </div>
+
       </div>
     </section>
   );

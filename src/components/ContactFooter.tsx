@@ -94,47 +94,6 @@ const ContactFooter = ({ onOpenAppointment }: ContactFooterProps) => {
         </motion.div>
       </div>
 
-      {/* ── ATELIER ADDRESS & CONTACT ROW ── */}
-      <div className="py-12 px-6 sm:px-10 md:px-16 lg:px-20 border-b border-[#141210]/10 grid grid-cols-1 md:grid-cols-3 gap-8 text-[#141210]">
-        <div className="flex items-start gap-3.5">
-          <MapPin size={18} className="text-[#A68037] mt-1 shrink-0" />
-          <div>
-            <span className="font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#7A6F64] block mb-1">
-              Atelier Lisbon
-            </span>
-            <p className="font-sans text-[13px] leading-relaxed text-[#2C2621]">
-              Avenida da Liberdade 210, 4º Andar<br />
-              1250-148 Lisboa, Portugal
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3.5">
-          <Phone size={18} className="text-[#A68037] mt-1 shrink-0" />
-          <div>
-            <span className="font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#7A6F64] block mb-1">
-              Direct Telephone
-            </span>
-            <p className="font-sans text-[13px] leading-relaxed text-[#2C2621]">
-              +351 21 340 8920 (Lisbon Studio)<br />
-              +351 22 609 4410 (Porto Workshop)
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3.5">
-          <Mail size={18} className="text-[#A68037] mt-1 shrink-0" />
-          <div>
-            <span className="font-sans text-[10px] font-semibold tracking-[0.24em] uppercase text-[#7A6F64] block mb-1">
-              Press & Inquiries
-            </span>
-            <p className="font-sans text-[13px] leading-relaxed text-[#2C2621]">
-              commissions@jaccreation.com<br />
-              press@jaccreation.com
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* ── FOOTER BOTTOM BAR ── */}
       <div className="py-10 px-6 sm:px-10 md:px-16 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-8 text-[#141210]">

@@ -10,6 +10,7 @@ import FeaturedProjects from './components/FeaturedProjects';
 import BrandStatement from './components/BrandStatement';
 import ContactFooter from './components/ContactFooter';
 import AppointmentModal from './components/ui/AppointmentModal';
+
 import ProjectModal, { type ProjectDetail } from './components/ui/ProjectModal';
 
 export default function App() {

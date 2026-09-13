@@ -28,7 +28,7 @@ const featuredProjects: ProjectDetail[] = [
     location: 'Serra da Estrela Mountain Ridge',
     year: '2024',
     description:
-      'A cultural pavilion suspended between forest and clearing — a threshold between nature and thought. Crafted from charred timber and honed local slate, it offers acoustic stillness for public reflection.',
+      'A cultural pavilion suspended between forest and clearing, a threshold between nature and thought. Crafted from charred timber and honed local slate, it offers acoustic stillness for public reflection.',
     img: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&auto=format&fit=crop&q=85',
     scale: '1:1,000 (Forest Clearing)',
     materials: ['Charred Douglas Fir', 'Honed Serra Slate', 'Weathering Steel (Cor-Ten)', 'Rammed Earth'],
@@ -207,11 +207,10 @@ const FeaturedProjects = ({ onSelectProject }: FeaturedProjectsProps) => {
             key={i}
             onClick={() => scrollToCard(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`h-1.5 transition-all duration-400 rounded-full ${
-              i === currentIndex
+            className={`h-1.5 transition-all duration-400 rounded-full ${i === currentIndex
                 ? 'w-10 bg-[#C5A059]'
                 : 'w-2 bg-white/20 hover:bg-white/40'
-            }`}
+              }`}
           />
         ))}
       </div>

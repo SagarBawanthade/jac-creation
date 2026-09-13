@@ -34,12 +34,12 @@ const BrandStatement = () => {
           className="w-24 h-[1.5px] bg-[#C5A059] origin-center mb-16"
         />
 
-        {/* Headline — Staggered Words */}
-        <div className="flex flex-wrap justify-center items-baseline gap-x-[0.28em] gap-y-1 max-w-5xl">
+        <div className="flex flex-wrap justify-center items-baseline gap-x-[0.35em] gap-y-2 max-w-5xl">
           {words.map((word, i) => {
             const isGold = word === 'quiet' || word === 'act."';
+
             return (
-              <div key={i} style={{ overflow: 'hidden' }}>
+              <div key={i} className="overflow-hidden">
                 <motion.span
                   initial={{ y: '115%' }}
                   animate={inView ? { y: 0 } : {}}
@@ -48,14 +48,15 @@ const BrandStatement = () => {
                     duration: 1.05,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={`inline-block font-serif font-light italic ${
-                    isGold
-                      ? 'text-[#C5A059] drop-shadow-[0_2px_15px_rgba(197,160,89,0.25)]'
-                      : 'text-[#FFFFFF]'
-                  }`}
-                  style={{ fontSize: 'clamp(2.8rem, 7.5vw, 7.5rem)' }}
+                  className={`block font-serif font-light italic ${isGold
+                    ? 'text-[#C5A059] drop-shadow-[0_2px_15px_rgba(197,160,89,0.25)]'
+                    : 'text-white'
+                    }`}
+                  style={{
+                    fontSize: 'clamp(2.8rem, 7.5vw, 7.5rem)',
+                  }}
                 >
-                  {word}
+                  {word}&nbsp;
                 </motion.span>
               </div>
             );
