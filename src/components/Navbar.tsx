@@ -1,22 +1,27 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import JacLogo from './ui/JacLogo';
+
+interface NavbarProps {
+  onOpenAppointment?: () => void;
+}
 
 const navLinks = [
   { label: 'Home', href: '#home' },
+  { label: 'About Us', href: '#about-us' },
+  { label: 'The Framework', href: '#framework' },
   { label: 'Projects', href: '#projects' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'About Us', href: '#about-us' },
   { label: 'Contact Us', href: '#contact' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onOpenAppointment }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -24,7 +29,9 @@ const Navbar = () => {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   return (
@@ -34,44 +41,47 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         style={{ transform: 'translateZ(0)' }}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 sm:px-8 md:px-14 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 transition-all duration-400 ${
           scrolled
-            ? 'py-3 bg-[#0a0a0a]/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(255,255,255,0.06)]'
-            : 'py-4 md:py-5'
+            ? 'py-3.5 bg-[#0C0B0A]/95 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)] border-b border-[#C5A059]/15'
+            : 'py-5 md:py-6 bg-gradient-to-b from-black/60 to-transparent'
         }`}
       >
         {/* Logo */}
-        <a href="#home" aria-label="Jac Creation home" className="shrink-0">
+        <a href="#home" aria-label="Jac Creation home" className="shrink-0 group">
           <JacLogo />
         </a>
 
         {/* Desktop Nav links */}
-        <ul className="hidden md:flex items-center justify-center gap-8">
+        <ul className="hidden lg:flex items-center justify-center gap-7 xl:gap-9">
           {navLinks.map(({ label, href }) => (
             <li key={label}>
               <a
                 href={href}
-                className="relative font-sans text-[11px] font-medium tracking-[0.28em] uppercase text-white/60 hover:text-white/90 transition-colors duration-300 group"
+                className="relative font-sans text-[11px] font-medium tracking-[0.24em] uppercase text-[#DDD6CC] hover:text-white transition-colors duration-300 py-1 group"
               >
                 {label}
-                <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-[#b8924a] group-hover:w-full transition-all duration-500 ease-in-out" />
+                <span className="absolute left-0 -bottom-0.5 h-[1.5px] w-0 bg-[#C5A059] group-hover:w-full transition-all duration-400 ease-out" />
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Desktop right tagline */}
-        <div className="hidden md:flex flex-col items-end gap-1 shrink-0">
-          <p className="font-sans text-[10px] font-medium tracking-[0.22em] uppercase text-white/60 text-right leading-[1.75]">
-            Spaces For<br />A More Human<br />Tomorrow.
-          </p>
-          <div className="w-8 h-px bg-[#b8924a]/50 mt-1" />
+        {/* Desktop Right CTA & Tagline */}
+        <div className="hidden lg:flex items-center gap-6 shrink-0">
+          <button
+            onClick={() => onOpenAppointment?.()}
+            className="inline-flex items-center gap-2 border border-[#C5A059]/60 hover:border-[#C5A059] hover:bg-[#C5A059] text-[#F0EBE3] hover:text-[#12100E] px-4 py-2 font-sans text-[10.5px] font-semibold tracking-[0.22em] uppercase transition-all duration-300 cursor-pointer shadow-md"
+          >
+            <span>Consultation</span>
+            <ArrowUpRight size={13} />
+          </button>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile Hamburger */}
         <motion.button
-          whileTap={{ scale: 0.88 }}
-          className="md:hidden flex items-center justify-center w-9 h-9 text-white/80 hover:text-[#b8924a] transition-colors duration-300"
+          whileTap={{ scale: 0.92 }}
+          className="lg:hidden flex items-center justify-center w-10 h-10 text-white/90 hover:text-[#C5A059] transition-colors duration-300 bg-black/40 backdrop-blur-md border border-white/10"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -84,7 +94,7 @@ const Navbar = () => {
                 exit={{ rotate: 45, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <X size={22} />
+                <X size={20} />
               </motion.span>
             ) : (
               <motion.span
@@ -94,14 +104,14 @@ const Navbar = () => {
                 exit={{ rotate: -45, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <Menu size={22} />
+                <Menu size={20} />
               </motion.span>
             )}
           </AnimatePresence>
         </motion.button>
       </motion.nav>
 
-      {/* Mobile Full-screen Menu */}
+      {/* Mobile Full-Screen Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -109,78 +119,71 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 md:hidden bg-[#0a0a0a]"
+            className="fixed inset-0 z-30 lg:hidden bg-[#0C0B0A]"
           >
-            {/* Subtle grain texture feel via border lines */}
-            <div className="absolute inset-0 flex flex-col">
-
-              {/* Top bar — same height as navbar to leave logo visible */}
-              <div className="h-[72px] shrink-0" />
-
-              {/* Menu content */}
-              <div className="flex-1 flex flex-col justify-between px-7 py-10 overflow-y-auto">
-
-                {/* Nav links */}
-                <nav className="flex flex-col gap-0">
-                  {navLinks.map(({ label, href }, i) => (
-                    <motion.div
-                      key={label}
-                      initial={{ opacity: 0, x: -24 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -16 }}
-                      transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="border-b border-white/[0.07]"
+            <div className="flex flex-col h-full pt-28 pb-10 px-8 sm:px-12 overflow-y-auto justify-between">
+              {/* Nav links */}
+              <nav className="flex flex-col divide-y divide-white/10">
+                {navLinks.map(({ label, href }, i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -16 }}
+                    transition={{ delay: i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <a
+                      href={href}
+                      onClick={() => setMenuOpen(false)}
+                      className="group flex items-center justify-between py-5 w-full"
                     >
-                      <a
-                        href={href}
-                        onClick={() => setMenuOpen(false)}
-                        className="group flex items-center justify-between py-5 w-full"
-                      >
-                        <span className="font-serif text-[1.75rem] font-light tracking-[0.04em] text-white/80 group-hover:text-white transition-colors duration-300">
-                          {label}
-                        </span>
-                        <motion.span
-                          className="text-[#b8924a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          initial={{ x: -6 }}
-                          whileHover={{ x: 0 }}
-                        >
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                          </svg>
-                        </motion.span>
-                      </a>
-                    </motion.div>
-                  ))}
-                </nav>
-
-                {/* Bottom section — tagline + gold accent */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.38, duration: 0.5 }}
-                  className="mt-10 flex flex-col gap-4"
-                >
-                  {/* Gold divider */}
-                  <div className="w-10 h-px bg-[#b8924a]/60" />
-
-                  <p className="font-sans text-[10px] font-medium tracking-[0.28em] uppercase text-white/35 leading-[2]">
-                    Spaces For<br />A More Human<br />Tomorrow.
-                  </p>
-
-                  {/* Social / contact chips */}
-                  <div className="flex gap-4 mt-2">
-                    {['Instagram', 'Behance'].map((s) => (
-                      <span
-                        key={s}
-                        className="font-sans text-[9px] tracking-[0.22em] uppercase text-[#b8924a]/70 border border-[#b8924a]/25 px-3 py-1.5"
-                      >
-                        {s}
+                      <span className="font-serif text-[1.85rem] font-light tracking-[0.02em] text-white/90 group-hover:text-[#C5A059] transition-colors duration-300">
+                        {label}
                       </span>
-                    ))}
+                      <span className="text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        →
+                      </span>
+                    </a>
+                  </motion.div>
+                ))}
+              </nav>
+
+              {/* Bottom Consultation CTA & Socials */}
+              <div className="pt-8 border-t border-white/10 flex flex-col gap-5">
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onOpenAppointment?.();
+                  }}
+                  className="w-full py-4 bg-[#C5A059] text-[#12100E] font-sans text-[11px] font-semibold tracking-[0.24em] uppercase text-center"
+                >
+                  Book an Appointment
+                </button>
+
+                <div className="flex items-center justify-between pt-2">
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/40">
+                    Lisbon · Porto
+                  </span>
+
+                  <div className="flex gap-4">
+                    <a
+                      href="https://linkedin.com/company/jaccreation"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-sans text-[10px] tracking-[0.2em] uppercase text-[#C5A059] border border-[#C5A059]/30 px-3 py-1.5"
+                    >
+                      LinkedIn
+                    </a>
+                    <a
+                      href="https://instagram.com/jaccreation"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-sans text-[10px] tracking-[0.2em] uppercase text-[#C5A059] border border-[#C5A059]/30 px-3 py-1.5"
+                    >
+                      Instagram
+                    </a>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

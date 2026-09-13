@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
-
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
   margin: 0;
-  background-color: #0a0a0a;
+  background-color: #080808;
   color: #f5f0eb;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar */
+/* Thin gold scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #080808;
 }
 ::-webkit-scrollbar-thumb {
   background: #b8924a;
@@ -31,12 +30,11 @@ body {
 .font-serif {
   font-family: 'Cormorant Garamond', serif;
 }
-
 .font-sans {
   font-family: 'Inter', sans-serif;
 }
 
-/* Grain texture overlay */
+/* ─── Grain texture overlay ─── */
 .grain-overlay::after {
   content: '';
   position: fixed;
@@ -45,11 +43,11 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px;
-  opacity: 0.35;
-  z-index: 9999;
+  opacity: 0.035;
+  z-index: 999;
 }
 
-/* Horizontal scroll container */
+/* ─── Horizontal scroll ─── */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -58,31 +56,54 @@ body {
   display: none;
 }
 
-/* Line animation */
+/* ─── Animations ─── */
 @keyframes lineGrow {
   from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  to   { transform: scaleX(1); }
 }
 
-/* Fade up animation */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Cursor blink */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-/* Nav hover underline */
+/* ─── Magnetic button ─── */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+              background-color 0.35s ease,
+              color 0.35s ease;
+}
+.btn-magnetic:hover {
+  transform: scale(1.03);
+}
+
+/* ─── Image hover zoom ─── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+
+/* ─── Marquee strip ─── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Nav link underline ─── */
 .nav-link {
   position: relative;
   display: inline-block;
@@ -95,32 +116,14 @@ body {
   width: 0;
   height: 1px;
   background: #b8924a;
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* Magnetic button effect */
-.btn-magnetic {
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.btn-magnetic:hover {
-  transform: scale(1.03);
-}
-
-/* Split text container */
-.overflow-clip {
-  overflow: hidden;
-}
-
-/* Image hover zoom */
-.img-zoom {
-  overflow: hidden;
-}
-.img-zoom img {
-  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.img-zoom:hover img {
-  transform: scale(1.05);
+/* ─── Selection color ─── */
+::selection {
+  background: #b8924a40;
+  color: #f5f0eb;
 }
