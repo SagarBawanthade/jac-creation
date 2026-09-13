@@ -2,6 +2,9 @@
 > **Round 2 Assignment: Home Page Design & Development**  
 > Prepared for: **A.N.C (Alrize Nex Cell)** | Full Stack Developer Candidate  
 > Classification: **CONFIDENTIAL | Evaluation Purpose Only**
+> **For Best Experience Use in Mobile** 
+
+
 
 [![Vite](https://img.shields.io/badge/Vite-8.3-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
