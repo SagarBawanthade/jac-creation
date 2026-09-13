@@ -25,12 +25,7 @@
 
 ---
 
-## 🔗 Live Deployment & Source Code
 
-* **Live Deployment**: [Jac Creation on Vercel](https://jac-creation.vercel.app) *(or your Vercel deployment link)*
-* **Source Code**: [GitHub Repository — SagarBawanthade/jac-creation](https://github.com/SagarBawanthade/jac-creation)
-
----
 
 ## 📑 Brief Section Compliance
 
