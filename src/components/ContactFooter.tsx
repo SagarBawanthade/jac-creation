@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import JacLogo from './ui/JacLogo';
 import { LinkedinIcon, InstagramIcon } from './ui/icons';
 

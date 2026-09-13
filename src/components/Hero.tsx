@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroBg from '../assets/homebg.webp';
-import { ArrowDown, Compass } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 
 interface HeroProps {
   onExploreWork?: () => void;
