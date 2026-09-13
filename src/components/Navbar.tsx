@@ -42,7 +42,7 @@ const Navbar = ({ onOpenAppointment }: NavbarProps) => {
         style={{ transform: 'translateZ(0)' }}
         className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 transition-all duration-400 ${
           scrolled
-            ? 'py-3.5 bg-[#0C0B0A]/95 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)] border-b border-[#C5A059]/15'
+            ? 'py-3.5 bg-[#0C0B0A]/90 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
             : 'py-5 md:py-6 bg-gradient-to-b from-black/60 to-transparent'
         }`}
       >
